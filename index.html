@@ -1,190 +1,497 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
+<!DOCTYPE html><html class="stitch-anim-fade-in" lang="ko" style="scroll-behavior: smooth; position: relative;"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>greynomy — 사진·영상 포트폴리오</title>
-<meta name="description" content="사진과 영상 작업을 모은 포트폴리오입니다.">
-
-<!-- 소셜 공유 미리보기. 사이트를 배포한 뒤 url과 image를 실제 주소로 바꿔주세요. -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="greynomy — 사진·영상 포트폴리오">
-<meta property="og:description" content="사진과 영상 작업을 모은 포트폴리오입니다.">
-
-<link rel="stylesheet" href="assets/css/style.css">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SIM JAEUK - Video Creator Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-tint": "#5e5e5e",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "primary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "outline": "#7e7576",
+                        "surface-container": "#f0edec",
+                        "primary-container": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-container-low": "#f6f3f2",
+                        "primary": "#000000",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-primary-fixed-variant": "#474747",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#626262",
+                        "on-secondary-fixed-variant": "#464747",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "on-surface-variant": "#4c4546",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dcd9d9",
+                        "surface-bright": "#fcf9f8",
+                        "secondary-container": "#e1dfdf",
+                        "background": "#fcf9f8",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary-container": "#1a1c1c",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary-container": "#838484",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#ebe7e7",
+                        "outline-variant": "#cfc4c5",
+                        "tertiary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary": "#5e5e5e",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-container": "#848484",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "project-grid-gap": "24px",
+                        "section-gap": "120px",
+                        "container-padding": "64px",
+                        "mobile-margin": "24px",
+                        "text-stack-gap": "16px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["13px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["13px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                        "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .modal-open { overflow: hidden; }
+        
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+            * {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
-<body>
-
-<a class="skip-link" href="#main">본문으로 건너뛰기</a>
-
-<header class="site-header">
-  <nav class="nav" aria-label="주요 메뉴">
-    <a class="brand" href="#top">greynomy</a>
-    <ul class="nav-list">
-      <li><a href="#photo">사진</a></li>
-      <li><a href="#video">영상</a></li>
-      <li><a href="#about">소개</a></li>
-      <li><a href="#contact">연락</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main id="main">
-
-  <section class="hero" id="top">
-    <p class="hero-eyebrow">Photography &amp; Videography</p>
-    <h1 class="hero-title">순간을 남깁니다</h1>
-    <p class="hero-lede">
-      인물과 공간을 중심으로 사진과 영상을 작업합니다.
-      아래에서 작업물을 확인하실 수 있습니다.
-    </p>
-    <a class="button" href="#photo">작업 보기</a>
-  </section>
-
-  <!-- ─────────────────────────────  사진  ───────────────────────────── -->
-  <section class="section" id="photo">
-    <header class="section-head">
-      <h2 class="section-title">사진</h2>
-      <p class="section-sub">클릭하면 크게 볼 수 있습니다.</p>
-    </header>
-
-    <!--
-      사진 추가 방법
-      1. 이미지 파일을 images/ 폴더에 넣습니다.
-      2. 아래 <figure> 블록을 복사해 src와 alt를 바꿉니다.
-      3. alt에는 사진 내용을 설명하는 문장을 적어주세요. 화면
-         낭독기 사용자와 검색 엔진이 이 텍스트를 읽습니다.
-
-      예시:
-      <figure class="photo">
-        <img src="images/wedding-01.jpg" alt="해질 무렵 야외 예식장에서 마주 선 신랑과 신부"
-             loading="lazy" width="1600" height="1067">
-      </figure>
-    -->
-    <div class="photo-grid">
-      <figure class="photo is-placeholder">
-        <div class="placeholder" role="img" aria-label="사진을 넣을 자리">
-          <span class="placeholder-label">images/ 폴더에<br>사진을 넣어주세요</span>
-        </div>
-      </figure>
-      <figure class="photo is-placeholder">
-        <div class="placeholder placeholder--tall" role="img" aria-label="사진을 넣을 자리">
-          <span class="placeholder-label">두 번째 사진</span>
-        </div>
-      </figure>
-      <figure class="photo is-placeholder">
-        <div class="placeholder" role="img" aria-label="사진을 넣을 자리">
-          <span class="placeholder-label">세 번째 사진</span>
-        </div>
-      </figure>
-      <figure class="photo is-placeholder">
-        <div class="placeholder placeholder--tall" role="img" aria-label="사진을 넣을 자리">
-          <span class="placeholder-label">네 번째 사진</span>
-        </div>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ─────────────────────────────  영상  ───────────────────────────── -->
-  <section class="section" id="video">
-    <header class="section-head">
-      <h2 class="section-title">영상</h2>
-      <p class="section-sub">
-        영상 파일은 저장소에 직접 올리지 않고 YouTube 또는 Vimeo 링크로 연결합니다.
-      </p>
-    </header>
-
-    <!--
-      영상 추가 방법
-      1. YouTube에 영상을 올립니다. 공개하고 싶지 않다면 '일부 공개'로
-         설정하면 링크를 아는 사람만 볼 수 있습니다.
-      2. 주소에서 영상 ID를 찾습니다.
-         https://www.youtube.com/watch?v=ABC123xyz  →  ABC123xyz
-      3. 아래 data-youtube 값을 그 ID로 바꾸고 제목을 수정합니다.
-
-      썸네일은 YouTube에서 자동으로 가져오며, 재생 버튼을 누르기
-      전까지는 영상이 로드되지 않습니다. 페이지가 훨씬 빨라집니다.
-    -->
-    <div class="video-grid">
-      <figure class="video-card">
-        <div class="video-frame" data-youtube="" role="button" tabindex="0"
-             aria-label="영상 재생: 첫 번째 작업">
-          <span class="video-play" aria-hidden="true"></span>
-          <span class="video-hint">data-youtube에 영상 ID를 넣어주세요</span>
-        </div>
-        <figcaption class="video-caption">
-          <h3 class="video-title">첫 번째 작업</h3>
-          <p class="video-meta">촬영·편집 · 2026</p>
-        </figcaption>
-      </figure>
-
-      <figure class="video-card">
-        <div class="video-frame" data-youtube="" role="button" tabindex="0"
-             aria-label="영상 재생: 두 번째 작업">
-          <span class="video-play" aria-hidden="true"></span>
-          <span class="video-hint">data-youtube에 영상 ID를 넣어주세요</span>
-        </div>
-        <figcaption class="video-caption">
-          <h3 class="video-title">두 번째 작업</h3>
-          <p class="video-meta">촬영·편집 · 2026</p>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ─────────────────────────────  소개  ───────────────────────────── -->
-  <section class="section section--narrow" id="about">
-    <header class="section-head">
-      <h2 class="section-title">소개</h2>
-    </header>
-    <div class="prose">
-      <!-- 이 부분을 직접 작성해주세요. 아래는 형식을 보여주는 예시입니다. -->
-      <p>
-        사진과 영상을 함께 작업합니다. 인물 촬영과 현장 기록을 주로 맡아 왔습니다.
-      </p>
-      <p>
-        작업 문의는 아래 연락처로 보내주시면 회신드리겠습니다.
-      </p>
-
-      <h3>작업 분야</h3>
-      <ul>
-        <li>인물 · 프로필 촬영</li>
-        <li>행사 · 현장 기록</li>
-        <li>영상 촬영 및 편집</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ─────────────────────────────  연락  ───────────────────────────── -->
-  <section class="section section--narrow" id="contact">
-    <header class="section-head">
-      <h2 class="section-title">연락</h2>
-    </header>
-    <div class="prose">
-      <!--
-        주의: 이메일 주소를 페이지에 그대로 적으면 스팸 수집 프로그램이
-        긁어갈 수 있습니다. 인스타그램 DM 등을 주 창구로 쓰는 편이
-        안전합니다. 이메일을 넣으실 거라면 아래 링크를 수정해주세요.
-      -->
-      <ul class="contact-list">
-        <li><a href="#" rel="me noopener">Instagram</a></li>
-        <li><a href="https://github.com/simpeach" rel="me noopener">GitHub</a></li>
-      </ul>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <p>&copy; <span id="year">2026</span> greynomy. All rights reserved.</p>
-</footer>
-
-<!-- 사진 확대 보기 -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="사진 확대 보기" hidden>
-  <button class="lightbox-close" type="button" aria-label="닫기">&times;</button>
-  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+<body class="bg-background text-on-background min-h-screen">
+<div class="max-w-[1920px] mx-auto relative bg-background">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full max-w-[1920px] left-1/2 -translate-x-1/2 z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant/30 flex justify-between items-center px-mobile-margin md:px-container-padding py-4">
+<a class="font-headline-md text-headline-md font-bold tracking-tighter text-primary md:w-[140px]" href="#top">SIM JAEUK</a>
+<div class="hidden md:flex items-center gap-8 font-label-bold text-label-bold flex-1 justify-center">
+</div><a class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-full hover:opacity-80 transition-opacity font-label-bold text-label-bold" href="#footer-contact" style="background-color: rgb(0, 117, 222); color: rgb(255, 255, 255);">ABOUT ME</a>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary">menu</span>
 </div>
+</nav>
+<main class="pt-[100px] w-full">
+<!-- Hero Section -->
+<section class="px-mobile-margin md:px-container-padding pt-24 pb-32 text-center max-w-5xl mx-auto w-full">
+<h1 class="reveal text-6xl md:text-8xl font-black tracking-tighter text-primary mb-6 active" style="font-family: Caveat, cursive; font-weight: 700; text-transform: none;">All-Round<br>Video Creator</h1>
+<h2 class="reveal delay-100 font-headline-xl text-headline-xl text-surface-tint mt-12 mb-12 active">5년차 콘텐츠PD 심재욱입니다</h2>
+<p class="reveal delay-200 font-body-lg text-body-lg text-surface-tint max-w-3xl mx-auto leading-relaxed mb-12 active">콘텐츠의 기획과 연출 그리고 촬영 및 편집까지 콘텐츠의 A to Z를 책임지는 All-Rounder를 지향합니다.</p>
+<div class="reveal delay-300 flex flex-wrap justify-center gap-3 active"><span class="px-4 py-1.5 rounded-full border border-outline-variant/30 text-label-sm text-surface-tint font-medium" style="background-color: rgb(0, 117, 222); color: rgb(255, 255, 255); border-color: rgb(0, 117, 222);">Directing</span><span class="px-4 py-1.5 rounded-full border border-outline-variant/30 text-label-sm text-surface-tint font-medium" style="background-color: rgb(255, 177, 16); color: rgb(0, 0, 0); border-color: rgb(255, 177, 16);">Camera</span><span class="px-4 py-1.5 rounded-full border border-outline-variant/30 text-label-sm text-surface-tint font-medium" style="background-color: rgb(246, 73, 50); color: rgb(255, 255, 255); border-color: rgb(246, 73, 50);">Editing</span><span class="px-4 py-1.5 rounded-full border border-outline-variant/30 text-label-sm text-surface-tint font-medium" style="background-color: rgb(177, 129, 100); color: rgb(255, 255, 255); border-color: rgb(177, 129, 100);">Post-Production</span></div></section>
+<!-- Work Sections Container -->
+<div class="px-mobile-margin md:px-container-padding space-y-32 pb-32 max-w-6xl mx-auto w-full" id="work">
+<!-- SNS CONTENTS Section -->
+<section class="text-center reveal active w-full">
+<div class="mb-16">
+<h3 class="font-headline-xl text-headline-xl text-primary mb-4">SNS CONTENTS</h3>
+<p class="font-body-md text-body-md text-surface-tint mx-auto max-w-full leading-relaxed">SNS(인스타그램 or 유튜브) 운영에 지속 제작 가능한 영상 콘텐츠를 기획하고 콘텐츠의 연출 / 촬영 / 편집 전반을 담당하였습니다.</p>
+</div>
+<div class="mb-12 flex items-center justify-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<h4 class="font-headline-md text-headline-md text-primary">티유게더 (티유치과)</h4>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div><div class="flex flex-col items-center mb-12 -mt-8"><span class="font-label-sm text-label-sm text-surface-tint font-medium tracking-widest">2025.08 ~ 2026.03</span></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-project-grid-gap">
+<!-- Project Card 1 -->
+<a class="group block text-left w-full" href="projects/hello-zeronate.html"><div class="rounded-2xl overflow-hidden mb-text-stack-gap aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2"><img alt="티유 인스타그램 헬로제로" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNcdYE2nzXk1zS5MjgnFvYXv5sEAMQbQU76v56zTjlv2jEoNQURbcbVaAnF8LbtPky8RdZ7WWJxZnIJ37m9uzWC4ajudaUZqt3UYEPVj_NTge9O-6gx0QXO7KQSaoPgcJvzLELb8DSq7kvIaKZ9jAu0Rfl9RHEYcCwMsqb98KEeqoi7M7kMUZbatxxdCz5uoHU_xPikgYI5ibKq-_gCsv0UoNvZKuDf7Wmx9Mx41fV8P-hLVE7r8GpCNB116hUK22S7JGp5ses8MD7aZI"></div><h5 class="font-headline-md text-headline-md text-primary mb-2 group-hover:text-surface-tint transition-colors">티유치과 인스타그램 헬로 제로네이트 콘텐츠&nbsp;</h5><p class="font-label-sm text-label-sm text-surface-tint font-medium uppercase tracking-wider leading-relaxed"><span class="" style="letter-spacing: 0.325px; text-align: center;">Directing, PLANNING, CAMERA,</span><span class="" style="letter-spacing: 0.325px; text-align: center;">&nbsp;Editing</span></p></a>
+<!-- Project Card 2 -->
+<a class="group block text-left w-full" href="projects/tu-influencer.html"><div class="rounded-2xl overflow-hidden mb-text-stack-gap aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2"><img alt="티유치과 인스타그램 인플루언서 &amp; 자체 콘텐츠" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmIWXQ0TQ4qg_HJjMqGAYW1E3-w5PWMsqkfd-y3N6Rd0Uwz_qhg57qmPD3R_l-sz-0yaqP79VgnUnkdha5B2rYYw70Z2iQZYOqko8g5DiFKsqlJpU0ZE-x3k8h44CMK3MElzpM81SjG0yTUCZqtdKp-3PWKVVtULI1VkFzX8AQk9NBG1F_vRnuELGap4AZouOgb2A5ZESUL1lxlil1IxXse-aL8p6LEamOgkopT4vAqh-1sZogHncOUe0YP2RIlaCMO2EBil2e57Tgp_A"></div><h5 class="font-headline-md text-headline-md text-primary mb-2 group-hover:text-surface-tint transition-colors">티유치과 인스타그램 인플루언서 &amp; 자체 콘텐츠</h5><p class="font-label-sm text-label-sm text-surface-tint font-medium uppercase tracking-wider leading-relaxed"><span style="letter-spacing: 0.325px; text-align: center;" class="">Directing, PLANNING, CAMERA,</span><span style="letter-spacing: 0.325px; text-align: center;" class="">&nbsp;Editing</span></p></a>
+</div>
+</section>
+<!-- Experience Grid Section -->
+<section class="text-center pt-16 border-t border-outline-variant/20 reveal active w-full">
+<div class="flex flex-col items-center mb-16">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<h4 class="font-headline-md text-headline-md text-primary">애드쿠아인터렉티브 &amp; 그룹아이디디</h4>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<span class="font-label-sm text-label-sm text-surface-tint font-medium tracking-widest">2020.12 ~ 2024.05</span>
+</div>
+<div class="md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 w-full"><!-- Row 1 & 2 (6 items) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-12 w-full">
+<a class="group block text-center w-full" href="projects/maxim.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="맥심 커피믹스 공식 인스타그램" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-5_srUfx2ky8bBP-YKsFlbgJiyPFXgyag5ZPq5iCkRRwwHy8195Lj7sqYh3X_jfcuOuX480GjTyImQIxF3YAxrwC2_v7qhpHrwqUepW7GQKyouQm9L2iKUyGtoxEBZbFeGtHMSNhJ_4rFE5b_zUQrlDvFIMVEAWvF1ebgoitGeORye-08Z7i5XN0psafPu00CuezqGpcR0Mit2s2vqnUFkgaXb5y13hAV4fbFsn-kbVX-8viMRLjQsIuc5lGQvakragfnelxgq4QPQlc">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">맥심 커피믹스 공식 인스타그램</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="letter-spacing: 0.325px;">Directing, PLANNING, CAMERA,</span>&nbsp;Editing</p>
+</a>
+<a class="group block text-center w-full" href="projects/posco.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="포스코 공식 유튜브" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB623OLtrlqN3dLli7lV6sRRRik9lxjzmAAoYq8e8vQwhiyurQmaHodT45YkKHxgtdpcplbzfpt17Hl5STYv_fzFKbqQJJRblrSnOOVljShkJzb9iHlE_WHUWdrbDzT4A2UNLVeKmlKpftWre0F-n23sNW33VM_1LF3-VwvyMwnVlUCeyVww0HlDTkwtlS5YmzwM6Cg5j3dqUiwC99eYi_IGJ_6jZLtf9dDeY43XqiqYmzzmi0OlZhJDC-jQp5oQg4DtiHtllwssLJaVs0">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">포스코 공식 유튜브</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">Directing,&nbsp;<span class="" style="letter-spacing: 0.325px;">PLANNING,&nbsp;</span>CAMERA,</span><span class="" style="letter-spacing: 0.325px;">&nbsp;Editing</span></p>
+</a>
+<a class="group block text-center w-full" href="projects/finetoday.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="파인투데이코리아 공식 인스타그램" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhYN3rk-_ODkv6uz5bMKHr3LGjTpav8MzDeKv0iCzJWumKtUGB7G8C0swlHVq_59z3m9bqsrNn8Mu8fPn3jqm3VHPFEtkcdcxLPK2JW6PC7PCDlu-zcRSq_gkZT3bX5obG5btPCfwpQ7N8d-f673FmyeDsCL0rxb70_D9yN1kwiUMYDZ6gE8gBfA_0KZVdVRfEjXYp9ZeKU3nXQCe_ayYSp0istppROQn5oaN0llf43y1evl6HFnNF7S9JG82Y_krp7_prekuc2oVNrHM">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">파인투데이코리아 공식 인스타그램</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">Directing, CAMERA,</span><span class="" style="letter-spacing: 0.325px;">&nbsp;Editing</span></p>
+</a>
+<a class="group block text-center w-full cursor-pointer" href="projects/glasslock.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="글라스락 공식 인스타그램 &amp; 유튜브" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkWI--WKCCy3cEU2kEdiwkPhGnIF9F0-7JLms3UoQdHjDCgIRpf8OSe-X9gicMwOt4xIGaM1f9olpbUs4xvN1EYAWuCbkSH_gsryxNMST8N9916ik5BBKYg7Umd6njMSIqOBBj6_yfKoXbtHENNXV8gJMVxICm4pBgzlgkiSyMiQhlgBo7nM7uv4-nz7FaEXfK41_v8C7qzI5pooPh9boT5gSpwIDOZLHexQ7Qe2VMdZpNKcgAbcLSjDAlOa-kC0vx2mh242Kc3CkiOic">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">글라스락 공식 인스타그램 &amp; 유튜브</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">Directing,&nbsp;<span class="" style="letter-spacing: 0.325px;">PLANNING,</span>&nbsp;CAMERA,</span><span class="" style="letter-spacing: 0.325px;">&nbsp;Editing</span></p>
+</a>
+<a class="group block text-center w-full cursor-pointer" href="projects/sony.html"><div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2"><img alt="소니 알파 유니버스 인스타그램 &amp; 유튜브" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-I0MpEyGxThzZHhSoB5OZSaIndAtzEO66QYWVZlqAz1CF0D5hpSfSYbp5xWAEm5DtoNiSSfJw7MLM9lnpGWUThHvMGg7L1aTqx1gCi-KIJE-UXU6bNNx8cLdXt12PR3uxPTLG16QC4Lo9rTxRb1IMjMRn7c7IqLlCVFovBr1Q-GxOcC0xMCu1O-tHb1y4ZVQCBWyJxnxh8t2h_zmoLsR7miGp1ETRl7yGuBBYtdG01FVQvg2ajZcroJ4J_yPTBQG5OJ7ysgwNZ2k3DZ0"></div><h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">소니 알파 유니버스 인스타그램 &amp; 유튜브</h5><p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">CAMERA,</span><span class="" style="letter-spacing: 0.325px;">&nbsp;Editing</span></p></a>
+<a class="group block text-center w-full cursor-pointer" href="projects/shilla.html"><div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2"><img alt="신라호텔 공식 인스타그램" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa841c5fnHPxg3q7bxBBxJGKQSx702Lew9Gps4FiAYmxa81l4ysSlMWhcbKGv2iiCxHD-AOwGEdF3nZwiM2G9XtjvGeTr5mFDRTNOSsd116MZ5sPiUGTE-IFptlSQmLxNWwtEVz12fOhWEKd7vL406JP30BeyTKSIFJ3mRiWeEa4NSKZY_vXWOcMAO2MVI3nBd8Rr8SQNLOw57o_XVENHaxo95hk_4HjRqrj4Q-rJgDJ8VpPpwgRQczHzoTIFaMPgM0dWAXFpoQPkx40Y"></div><h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">신라호텔 공식 인스타그램</h5><p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">CAMERA,</span><span class="" style="letter-spacing: 0.325px;">&nbsp;Editing</span></p></a>
+</div>
+<!-- Row 3 (2 items centered) -->
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-12 w-full">
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/jinro.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="HL 유튜브" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCop3SzpX1KugLyMOpU6flveChdMBoh6-_xCJIcHv9yMizC3jKP291Q1Q8oJODttBLEcL423DZQ34_QqMKCk5gJnm4REEnl5nJK-p_1I3gAedGPvuelXYFIBSPeOt4lH7sqGOpnPsuSa-TCi10959pQZKI1ohi1PIEkKIuuhSoP9kKa4ZVib7nC_HtGCu0kQYVEkpAqv0CYhIwq4RDgWOI1u_YEA8zHmJeGaruasfZJlVJeMt9k7YOR5ZHGXUty1ByLpAEU401f3QJhmkA">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">하이트진로 '진로' 공식 인스타그램</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide">PLANNING, PRODUCER</p>
+</a>
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/hl.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="F&amp;B 프랜차이즈 TVC" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiFhuNj8I760m3BJCymdrr54Pemr-OR9TpwvHL5ecGRiRU4jVyLDiu1VKgbyQHFsBOX0HJXe3IWu7hAdJyFeUlo7cloFjG41I7nLVhPGaljIHTGFPd7ZJ24eYfJbmzBubiL6ZkXk-j3iRNNzCUR86nUFa7ZRiLHlxLQjom9jxEXAqlpgJ6N7E7Yz_QmvO7mdcF78ALfGRuBKCAJcSlkcr6GzDYjA5vRWsAYmZTFDv9zIIGyUM6aKqF0x0Egk-68Q2Iu8BxCgVIQ2viNUE">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">HL 공식 유튜브</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">CAMERA,</span><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">&nbsp;Editing</span></p>
+</a>
+</div></div>
+</section>
+<!-- Freelancer Section -->
+<section class="text-center pt-16 border-t border-outline-variant/20 reveal active w-full">
+<div class="flex items-center justify-center gap-3 mb-16">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<h4 class="font-headline-md text-headline-md text-primary">프리랜서</h4>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-12 w-full">
+<!-- Project Card 1 -->
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/mirae-n.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="HL 유튜브" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHoHjaJV60L1NQpwT8uwnDoA99lkrT-1VQkhDg203_yaX-FAaa3AEB05vZV5GEW_D_OALk7OTDPeLczMC_xZuWtO0x93Ak0B8ymvtN-enqxHnPZQsd7kYWIFC_GgBWadxiMeZq4f7M8NIEWeh8axGbH4iyrCA5zWTe_Yu2u4HPkdhRA4i1rp7QzVd-ucl6JApVXHVdbOuvje8xnDAYaguwWhAGy9LKaptAhMIOiVFATEdHYrOF2cfiubKJIglZClwapU14HZ_965pUsSc">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">미래엔 '초등 수학 상위권의 비결 문해길'&nbsp; &nbsp;&nbsp;</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide">PLANNING, PRODUCER</p>
+</a>
+<!-- Project Card 2 -->
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/hyundai-culture.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="포스코 공식 유튜브" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2COZfvFwV_FRIgvtW56ZQ8wFeWzFDYwzmyBvVuRVvM1bN7cTaaw0oEZTxocjGMhpQiPTcKIUxUAJGHI6sGPwYYLqihq6TtmGKMDWC_Gaz_nBGOB_3br7IamjgDeKw2dYHiOk8FxdFTiDu8nalFubHikdj9V8JdsavHCv7j0iJ1wFJzGPMLWPzcYjnwOPiXnWnr8gp7v01Bqbe0mT8Hqv1rnRfNhNTkA67YG600eQBwBpShJcpLuvpqDMmSl9_qj_r_FLbeS6C7469Vac">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">현대백화점 문화센터 유튜브&nbsp;&nbsp;</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide"><span class="" style="--tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; letter-spacing: 0.325px;">Directing, PLANNING, CAMERA,</span><span class="" style="letter-spacing: 0.325px;">&nbsp;Editing</span></p>
+</a>
+</div>
+</section>
+<!-- Commercial Film Section -->
+<section class="text-center pt-24 border-t border-outline-variant/30 reveal active w-full">
+<div class="mb-16">
+<h3 class="font-headline-xl text-headline-xl text-primary mb-4">COMMERCIAL FILM</h3>
+<p class="font-body-md text-body-md text-surface-tint max-w-2xl mx-auto leading-relaxed">TVC 혹은 유튜브 광고의 제작을 위한 PD 및 촬영 현장 조연출을 담당하였습니다.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-12 w-full"><!-- Row 1: 2 items centered -->
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-12 w-full mb-12">
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/tu-brand-film.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="셀럽 인터뷰 토크쇼" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsE2ONpSguC9dHulhT_BorilH8byUsohTwWjR_uT1-R0jwCr_vDkLJ4hxZ3d0S1XmJUUDqHh8gIxNMYiOj7g0dMqYXuSXSwAsaTBjK53xQM0CO08JloxcaINMg74zMsoy1JJfyoKe1_z59xb_JSL8KpcDn6XiuHQAKC-opGdVXHRB4jf1Oe8RfDB6dhksbb20aW05jyXTuAtgJfy__JTYca_u10MKFQpK0DVUBEPBgtUJ86cAxu5CFzKHxOb0VHvraCxaZtJlHhi9-NbA">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">TU치과 브랜드필름</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide leading-relaxed">PLANNING, PRODUCER</p>
+</a>
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/lotteria.html">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="브랜드 앰버서더 브이로그" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDscW1qzreqnY9_Tf7mDPXCSGlDt6AvILnIycc1YWaKsaKPhTH3UJMMWIvlZ61nvSgHCY9kYxbes8Km0UF8msfjXL9n5dO54X6MQ5_WGbVeJpSxG_8uiCDpbHIYc7XuPY9U1zXehYpB-WZvcJj5wS9Y3ON_9hChQ55XmU2sMiXCtUsfh6Ip4elxJ2bT9xsNUqFz_E1tkQqgMrOtTORqy_gVYS9yZxQhGXO709xFIExcK2dziMXowApBvqRdxQK-EqeXl9axKzFLLkulvVA">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">롯데리아 '스낵의 아리아'</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide leading-relaxed">Planning, LYRICS, PD, ASSISTANT DIRECTOR</p>
+</a>
+</div>
+<!-- Row 2: 3 items centered -->
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-12 w-full">
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/commercial-film.html#senseday">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="웹예능 오리지널 시리즈" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJfdI2kHU785WztdEmhUoqhHfh-YkRIFG8HAQaycZ-NJkebfPkHEF2JdBV-1TXWGgi0EY-fU4GjUpfRmBIfbj1sZUZFBgIutotHCzLcDYUhdlJkm_1_jiGkLBD-C96nBpFXnmsbRZoxQnyujBWbFPuYBRE6Q_3rsKA3Wshlr-rkZmARRODMM8YpBZvqwtlrIxlCCgtr8pp8v0XzOpVEYekMsERTQk3h9Z4MdDrSGZBTINLtKat3MZuP19433y6c9VRj5K2zoVYbdHPvsk">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">유한양행 미니멀 피임약 '센스데이'</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide leading-relaxed"><span class="" style="letter-spacing: 0.325px;">PD, ASSISTANT DIRECTOR</span></p>
+</a>
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/commercial-film.html#depend">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="IT 테크 리뷰 채널 기획/편집" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7jedOVbKr3GU5TX4tctreQvI_4P6GIgk4B9Mr_S3ygxJNDZva2BFeJXFdsqWb6Ll1H5b6cYrC7Ibuz4bCXqJFEl_txQdIEo08L8pfVvPqgxUelKJOLVGR1WXDQBrRqKO3XEjPvcVMiIgzF223ydTTKyYoNodiu6Gk4c9t6d_oYVyVFc4ZTyRZCGJReG0q4xDgTDWMD6vNXhfUegtyvJk5rN14BEkWFpISHhchv20E5L9RSH_HkaxVY5FnHQgwTaQkcHWAA78Jkw_ivKo">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">유한킴벌리 스타일 언더웨어 '디펜드'</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide leading-relaxed">PD, ASSISTANT DIRECTOR</p>
+</a>
+<a class="group block text-center w-full md:w-[calc(33.333%-22px)]" href="projects/commercial-film.html#dermatix">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="푸드 탐방 다큐멘터리 시리즈" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXl4uA_WSCTYduGixKJ-qg8wlkZQZ-dEQ3EDWXrZh98F3-j9PSXJk1Nsd3mwyR2xpw3fhdIOm7YLHmczuGV0_kA1mEUAFybdy9MCOVAkXzSLMinX1JsFwCurXWyy2eiBtDW-RUTsgZng4b8z01oUqPu9SooVPgvzTsblefk4m7NVeKGFm1gSSYQxUtIRwFkVDV0BXVvXnu3eG9N1I23OddA7tko4USpd3ec5PeQHKX8ThAPgPrMrozeSXPbZd1de3fnVvqOMYfuPTHcTE">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">한국메나리니 '더마틱스 울트라'</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide leading-relaxed"><span class="" style="letter-spacing: 0.325px;">PD, ASSISTANT DIRECTOR</span></p>
+</a>
+</div></div>
+</section>
+<!-- Motion Graphics Section -->
+<section class="text-center pt-24 border-t border-outline-variant/30 reveal active w-full">
+<div class="mb-16">
+<h3 class="font-headline-xl text-headline-xl text-primary mb-4">OTHERS</h3>
+<p class="font-body-md text-body-md text-surface-tint max-w-2xl mx-auto leading-relaxed">영상 외에 브랜드 생방송을 위한 라이브시스템 구성 및 스냅사진 촬영활동을 하고 있습니다.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-12 w-full">
+<div class="group block text-center w-full md:w-[calc(33.333%-22px)]">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="IT 서비스 인포그래픽" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwv22AfSzZ0cqqOPZ2ke3UJA8d1QY69jHgJdGs4kAKisnP9ASA4ucs9A63rkezVheXCVRgAJAUqogBs1B8vK6RRoRIHMYn44nkfHpNBA6G8JxC7TfkTbsNcs98di9mkc4NVWp-HoIrmwMFULoog35rtwMWJqskHNlzaAF8yBWqd8acg0s9CHZhfh2BT819WBPazPf8OyR0gSOMU6ECuN4_bivuLK0qpl4Y8rTMYxWv1W1N7bi7r2foY6aSI_ot6EIW8Nr6zOvB9JjsjGk">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">롯데리아 '랏츠 스낵타운' 라이브 시식회</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide leading-relaxed">LIVE STREAMING</p>
+</div>
+<div class="group block text-center w-full md:w-[calc(33.333%-22px)]">
+<div class="rounded-xl overflow-hidden mb-4 aspect-video bg-surface-variant relative shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-2">
+<img alt="기업 로고 인트로 애니메이션" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6_frVa07e7J_ms_s66vnc-_3uxguPs-uFF5bXz07g8C2pS2cJEEbkuaQ27tayFKFsKCG1yarVV5tRi3XhNMnifd8906mQE8jJ5n0WgVZ6LOBxiNK60p7nseoc2E7hFAlB8tP7ODbXlUBrln4ORacnJHXIgDtvpFMEG3VPK1nG4yxIpt8XcMzmCCooHs1VD3pCnnqslPbxuxCfVN60y4llXyv-ZDCflHhulIt9829kVwdImZzBvz4xgTQpMu_Q0Q5OBIov0pSsmDfEY0">
+</div>
+<h5 class="font-headline-md text-xl text-primary mb-1 group-hover:text-surface-tint transition-colors">스냅사진 촬영</h5>
+<p class="font-label-sm text-label-sm text-surface-tint uppercase tracking-wide leading-relaxed">CAMERA, RETOUCHING, COLOR GRADING</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Dark About Me Section -->
+<section class="bg-[#111111] text-[#f5f5f5] pt-32 pb-40 px-mobile-margin md:px-container-padding reveal active w-full" id="about-me">
+<div class="max-w-6xl mx-auto w-full">
+<h2 class="font-display-lg text-center mb-24 font-bold tracking-tight text-4xl">ABOUT ME</h2><div class="flex flex-col items-center mb-24">
+<div class="w-40 h-40 rounded-full bg-surface-variant overflow-hidden mb-6 border-2 border-[#333] flex items-center justify-center">
+<img alt="심재욱" class="w-full h-full object-cover object-[center_20%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_ZLFICyUI-0YM7pGsNvDWF2Zz73hWlxJZTp9EQM9SYeC0OdYE0DRXXZ6LBZ0EiQebowdri-RCf7sehQA211BarwwQV2mcOotV-USZiNLlPCKSBjJusRlMw2KDe00jG0Z5sFUUnXH6RzVpTnOV7qaW0vkCOMm73BKKPwmcNOhfaftDf9WCjJr2t5tmNcWNhBhe2UVMuKevXJVUZSrzIgaZFNkLCz0hGcqRM0maKFUxtDKJhWW1uiqSc_gNYprLRJif_GUX_SWz0j2OxZw">
+</div>
+<h4 class="text-4xl font-bold text-white tracking-tight">심재욱 <span class="text-2xl font-medium text-[#888] ml-2">(Sim Jaeuk)</span></h4>
+</div>
+<div class="space-y-24 w-full">
+<!-- Top Row: Profile & Experience -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 w-full">
+<!-- Profile -->
+<div class="text-center md:text-left w-full">
+<h3 class="font-headline-md text-2xl font-bold mb-8 text-white/90 uppercase tracking-widest">Profile</h3>
+<ul class="space-y-4 font-body-lg text-[#b0b0b0] inline-block text-left w-full">
+<li class="grid grid-cols-[120px_1fr] items-center leading-relaxed"><span class="font-bold text-white uppercase text-sm tracking-wider">생년월일</span> 1996.04.15</li>
+<li class="grid grid-cols-[120px_1fr] items-center leading-relaxed"><span class="font-bold text-white uppercase text-sm tracking-wider">전화번호</span> 010.5609.5847</li>
+<li class="grid grid-cols-[120px_1fr] items-center leading-relaxed"><span class="font-bold text-white uppercase text-sm tracking-wider">E-mail</span> dook_ba@naver.com</li>
+<li class="grid grid-cols-[120px_1fr] items-center leading-relaxed"><span class="font-bold text-white uppercase text-sm tracking-wider">주소</span> 서울특별시 송파구 잠실동 178</li>
+</ul>
+<div class="mt-16 space-y-16 w-full">
+<div class="w-full">
+<h3 class="font-headline-md text-2xl font-bold mb-8 text-white/90 uppercase tracking-widest">Degree</h3>
+<div class="space-y-8 font-body-lg text-[#b0b0b0] w-full">
+<div class="w-full">
+<p class="font-bold text-white text-sm tracking-widest mb-2 leading-relaxed">2021.02</p>
+<p class="text-lg leading-relaxed">홍익대학교 광고홍보학부 광고홍보학과 졸업</p>
+</div>
+<div class="w-full">
+<p class="font-bold text-white text-sm tracking-widest mb-2 leading-relaxed">2015.02</p>
+<p class="text-lg leading-relaxed">강원도 강릉시 강릉고등학교 졸업</p>
+</div>
+</div>
+</div>
+<div class="w-full">
+<h3 class="font-headline-md text-2xl font-bold mb-8 text-white/90 uppercase tracking-widest">License &amp; Duty</h3>
+<ul class="space-y-4 font-body-lg text-[#b0b0b0] inline-block text-left list-none w-full">
+<li class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-3 before:w-1.5 before:h-1.5 before:bg-[#555] before:rounded-full leading-relaxed">2종 보통 운전면허</li>
+<li class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-3 before:w-1.5 before:h-1.5 before:bg-[#555] before:rounded-full leading-relaxed">워드프로세서 2급</li>
+<li class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-3 before:w-1.5 before:h-1.5 before:bg-[#555] before:rounded-full leading-relaxed">육군 병장 만기 전역 (2017.02~2018.11)</li>
+</ul>
+</div>
+</div></div>
+<!-- Experience -->
+<div class="text-center md:text-left w-full">
+<h3 class="font-headline-md text-2xl font-bold mb-12 text-white/90 uppercase tracking-widest">Experience</h3>
+<div class="font-body-lg text-[#b0b0b0] max-w-2xl mx-auto md:mx-0 text-left border-l-2 border-[#333] pl-8 ml-8 space-y-16 w-full"><div class="relative w-full">
+<div class="absolute -left-[43px] top-2 w-4 h-4 rounded-full bg-[#111111] border-2 border-[#555]"></div>
+<span class="font-bold text-white text-base tracking-widest block mb-3">2025.08 ~&nbsp;<span class="" style="letter-spacing: 1.6px;">2026.03</span></span>
+<div class="w-full">
+<p class="font-bold text-white text-2xl mb-2 leading-relaxed">티유게더 (티유치과)</p>
+<p class="text-lg text-[#888] leading-relaxed">콘텐츠팀 근무</p>
+</div>
+</div>
+<div class="relative w-full">
+<div class="absolute -left-[43px] top-2 w-4 h-4 rounded-full bg-[#111111] border-2 border-[#555]"></div>
+<span class="font-bold text-white text-base tracking-widest block mb-3">2023.08 ~ 2024.05</span>
+<div class="w-full">
+<p class="font-bold text-white text-2xl mb-2 leading-relaxed">애드쿠아 인터렉티브</p>
+<p class="text-lg text-[#888] leading-relaxed">콘텐츠 &amp; 커뮤니케이션 제작본부 영상팀 근무</p>
+</div>
+</div>
+<div class="relative w-full">
+<div class="absolute -left-[43px] top-2 w-4 h-4 rounded-full bg-[#111111] border-2 border-[#555]"></div>
+<span class="font-bold text-white text-base tracking-widest block mb-3">2020.12 ~ 2023.07</span>
+<div class="w-full">
+<p class="font-bold text-white text-2xl mb-2 leading-relaxed">그룹아이디디</p>
+<p class="text-lg text-[#888] leading-relaxed">콘텐츠크리에이티브본부 영상팀 근무</p>
+</div>
+</div>
+<div class="relative w-full">
+<div class="absolute -left-[43px] top-2 w-4 h-4 rounded-full bg-[#111111] border-2 border-[#555]"></div>
+<span class="font-bold text-white text-base tracking-widest block mb-3">2020.06 ~ 2020.12</span>
+<div class="w-full">
+<p class="font-bold text-white text-2xl mb-2 leading-relaxed">그룹아이디디</p>
+<p class="text-lg text-[#888] leading-relaxed">인턴 근무</p>
+</div>
+</div></div>
+</div>
+</div>
+<!-- Bottom Row: Degree, License, Skills -->
+<div class="pt-16 border-t border-[#333] w-full">
+<h3 class="font-headline-md text-2xl font-bold mb-12 text-white/90 uppercase tracking-widest text-center">Skills &amp; Equipments</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 w-full">
+<div class="md:text-left w-full">
+<p class="font-bold text-white text-sm tracking-widest mb-6 uppercase leading-relaxed text-left" data-stitch-orig-opacity="0">Tool Skills</p>
+<div class="flex flex-wrap md:justify-start gap-3 justify-start w-full">
+<span class="bg-[#222] border border-[#444] text-white px-6 py-2.5 rounded-full text-sm hover:bg-[#333] transition-colors cursor-default">Premiere Pro</span>
+<span class="bg-[#222] border border-[#444] text-white px-6 py-2.5 rounded-full text-sm hover:bg-[#333] transition-colors cursor-default">After Effects</span>
+<span class="bg-[#222] border border-[#444] text-white px-6 py-2.5 rounded-full text-sm hover:bg-[#333] transition-colors cursor-default">Photoshop</span>
+<span class="bg-[#222] border border-[#444] text-white px-6 py-2.5 rounded-full text-sm hover:bg-[#333] transition-colors cursor-default">Davinci Resolve</span>
+<span class="bg-[#222] border border-[#444] text-white px-6 py-2.5 rounded-full text-sm hover:bg-[#333] transition-colors cursor-default">OBS Studio</span>
+<span class="bg-[#222] border border-[#444] text-white px-6 py-2.5 rounded-full text-sm hover:bg-[#333] transition-colors cursor-default">PowerPoint</span>
+</div>
+</div>
+<div class="text-center md:text-left w-full">
+<p class="font-bold text-white text-sm tracking-widest mb-6 uppercase leading-relaxed">Equipments</p>
+<div class="space-y-4 font-body-lg text-[#b0b0b0] inline-block text-left w-full">
+<div class="grid grid-cols-[120px_1fr] items-center w-full">
+<span class="font-bold text-white text-sm tracking-wider">CAMERA</span>
+<span class="">Sony E-Mount 계열 (A7M5 자체운용)</span>
+</div>
+<div class="grid grid-cols-[120px_1fr] items-center w-full">
+<span class="font-bold text-white text-sm tracking-wider">LIGHT</span>
+<span class="">Aputure, Nanlite</span>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background w-full py-24 px-mobile-margin md:px-container-padding max-w-6xl mx-auto text-center reveal active" id="footer-contact">
+<div class="flex flex-col items-center justify-center mb-16 w-full">
+<h2 class="font-headline-xl text-headline-xl font-bold text-primary mb-4">프로젝트 의뢰 및 협업</h2>
+<p class="font-body-md text-body-md text-surface-tint mb-12 leading-relaxed">기획에서부터 제작까지, 흥미로운 콘텐츠를 만들어 가겠습니다</p>
+<a class="inline-block bg-primary text-on-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-surface-tint transition-all mb-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1" href="mailto:dook_ba@naver.com" style="background-color: rgb(0, 117, 222); color: rgb(255, 255, 255);">dook_ba@naver.com</a>
+<p class="font-body-lg text-body-lg text-primary mt-2 font-medium">010 5609 5847</p>
+</div>
+</footer>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
 
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Optional: stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+        
+        // Trigger initial hero animations immediately
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if(el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        }, 100);
+    });
+</script>
+
+
+
+
+
+
+
+
+</body></html>

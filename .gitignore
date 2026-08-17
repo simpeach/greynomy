@@ -29,3 +29,6 @@
 *.psd
 *.tif
 *.tiff
+
+# Stitch 원본 내보내기 (작업용 소스, 사이트에는 쓰이지 않음)
+stitch_portfolio/
